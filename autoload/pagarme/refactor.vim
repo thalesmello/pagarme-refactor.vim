@@ -1,8 +1,7 @@
 function! pagarme#refactor#convert_to_javascript_multi_declaration_function()
-   silent! normal! vip
-   silent! '<,'>s/^\s+/var / silent! '<,'>s/^\s\+/var /
-   silent! '<,'>s/,$//
-   silent! normal! `<
+   " This functionality depends on vim-indent-text-obj
+   silent! normal vii
+   silent! '<,'>s/,\_W\+/\rvar /g
 endfunction
 
 function! pagarme#refactor#convert_to_javascript_chai_expect_function()
