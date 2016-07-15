@@ -1,9 +1,3 @@
-function! pagarme#refactor#convert_to_javascript_multi_declaration_function()
-   " This functionality depends on vim-indent-text-obj
-   silent! normal vii
-   silent! '<,'>s/,\_W\+/\rvar /g
-endfunction
-
 function! pagarme#refactor#convert_to_javascript_chai_expect_function()
   silent! %s /\v\s+\zs(.+)\.should/expect(\1).to/g
   silent! %s /\vhave\.status\((\d+)\)/have.property('statusCode', \1)/g
