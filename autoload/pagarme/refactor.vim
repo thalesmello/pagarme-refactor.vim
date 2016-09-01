@@ -20,8 +20,8 @@ function! pagarme#refactor#convert_to_pagarme_default_request_function()
 endfunction
 
 function! pagarme#refactor#convert_to_javascript_coroutine_block_function()
-   normal! ^f(w
-   execute "normal! ci(Promise.coroutine()"
+   execute "normal! ^/function\<cr>"
+   execute "normal cafPromise.coroutine()"
    execute "normal! \"\"P"
    normal! ea *
    normal! ^
