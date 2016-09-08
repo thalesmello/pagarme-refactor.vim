@@ -26,3 +26,25 @@ function! pagarme#refactor#convert_to_javascript_coroutine_block_function()
    normal! ea *
    normal! ^
 endfunction
+
+function! pagarme#refactor#convert_to_pagarme_gateway_wrap()
+  normal! ^cegatewayWrap
+  normal! f(w
+  normal da,
+  execute "normal! idata: "
+  execute "normal va,\<esc>"
+  execute "normal! asecureData: "
+  execute "normal va,\<esc>"
+  execute "normal! /\\V{\<cr>"
+  normal! di{
+  normal! v%p
+  execute "normal! /\\V\\.function\<cr>"
+  normal! dge
+  normal! i).spread(
+  normal! ^
+  normal ysi){
+  normal! f(%f(%
+  normal! A.catch(_err => { error = _err })
+  normal! ^f)%f(
+  normal wda,
+endfunction
