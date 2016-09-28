@@ -8,11 +8,7 @@ function! pagarme#refactor#convert_to_pagarme_default_request_function()
    if getline('.') =~ 'common\.request'
       silent! execute "normal! ^2wcedefaultRequest\<esc>/(\\_./e\<cr>\"ad/\\ze, comm\<cr>d/path':/e\<cr>d/\\ze'\<cr>"
       silent! execute "normal! /'method\<cr>d/method':\\_./e\<cr>2/'\\_./e\<cr>d/\\w\\|{\<cr>i, \<esc>"
-      if getline('.') =~ ',\(function ()\)\@!\_s\+{'
-         silent! execute "normal! %a)\<cr>\<esc>"
-      else
-         silent! execute "normal! /,\<cr>i)\<cr>\<esc>"
-      endif
+      silent execute "normal va,\<esc>a)\<cr>\<esc>"
       silent! execute "normal! d/\\w\<cr>i.then(function (_\<c-r>a) { \<c-r>a = _\<c-r>a })\<cr>.then(\<esc>mb"
       silent! 'a,'bs/(_{}) { {} = _{} /() {/
       silent! 'a,'bnormal! ==
